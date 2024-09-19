@@ -19,8 +19,15 @@ std::vector<uint8_t> keygen(int len){
 
 std::string encrypt(std::string &plaintext, std::vector<uint8_t> &key){
     std::string cipher;
+    int lastI = 0;
     for(int i=0;i<plaintext.size();i++){
         cipher += plaintext[i] ^ key[i%key.size()];
+        lastI = i;
+    }
+    lastI++;
+    while(lastI % key.size() != 0){
+        cipher += key[lastI%key.size()];
+        lastI++;
     }
     return cipher;
 }
