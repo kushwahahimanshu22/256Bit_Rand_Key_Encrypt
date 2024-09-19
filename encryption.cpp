@@ -9,7 +9,7 @@ int main(int argc, char **argv){
         exit(1);
     }
     //Generate 256 bit key
-    vector<uint8_t> key = keygen(16);
+    vector<uint8_t> key = keygen(32);
     string plaintext(argv[1]);
     //Encryption
     string cipher = encrypt(plaintext, key);
